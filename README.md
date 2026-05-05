@@ -46,3 +46,22 @@ The Goodreads ratings (out of 5) were normalized to a 10-point scale to match th
 - **Result:** F-statistic: `0.8708`, P-value: `0.5191`. We fail to reject the null hypothesis. The primary genre of the story does not have a statistically significant impact on how well it translates to the screen.
 
 ![EDA Charts](eda_charts.png "EDA Charts")
+
+## Machine Learning Methods
+
+To predict a movie's final rating based on its source material and production characteristics, two regression models were implemented and evaluated:
+- **Linear Regression**
+- **Random Forest Regressor**
+
+### Features and Preprocessing
+The models utilized the following features to predict the TMDB movie rating (`vote_average`):
+- `normalized_book_rating`: The Goodreads rating normalized to a 10-point scale.
+- `budget`: Production budget (missing or zero values were imputed with the median budget).
+- `primary_genre`: Categorical genre data.
+
+The preprocessing pipeline included standard scaling for numerical features and one-hot encoding for the categorical genre data. 
+
+### Feature Importance
+The Random Forest model was used to evaluate which factors most strongly influence the final movie rating. The analysis revealed the relative importance of book ratings, budgets, and specific genres.
+
+![Feature Importance](feature_importance.png "Feature Importance")
