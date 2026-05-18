@@ -50,18 +50,48 @@ The Goodreads ratings (out of 5) were normalized to a 10-point scale to match th
 ## Machine Learning Methods
 
 To predict a movie's final rating based on its source material and production characteristics, two regression models were implemented and evaluated:
-- **Linear Regression**
-- **Random Forest Regressor**
+
+- **Linear Regression** (Baseline)
+- **Random Forest Regressor** (Final Model)
+
+### Model Performance
+
+The Random Forest model outperformed the baseline, achieving the following metrics on the test set:
+- **RMSE (Root Mean Squared Error):** 0.62 (indicating high predictive accuracy on a 10-point scale)
+- **R-squared (R2):** 0.28 (explaining 28% of the variance in adaptation ratings)
 
 ### Features and Preprocessing
+
 The models utilized the following features to predict the TMDB movie rating (`vote_average`):
+
 - `normalized_book_rating`: The Goodreads rating normalized to a 10-point scale.
 - `budget`: Production budget (missing or zero values were imputed with the median budget).
 - `primary_genre`: Categorical genre data.
 
-The preprocessing pipeline included standard scaling for numerical features and one-hot encoding for the categorical genre data. 
+The preprocessing pipeline included standard scaling for numerical features and one-hot encoding for the categorical genre data.
 
 ### Feature Importance
-The Random Forest model was used to evaluate which factors most strongly influence the final movie rating. The analysis revealed the relative importance of book ratings, budgets, and specific genres.
+
+The Random Forest model was used to evaluate which factors most strongly influence the final movie rating. The analysis revealed that the **Book Rating (46.1%)** is the primary driver of cinematic success, followed by the **Budget (34.3%)**.
 
 ![Feature Importance](feature_importance.png "Feature Importance")
+
+## Key Findings & Conclusions
+
+1. **The "Book is Better" Trope is Real:** Statistical testing confirms that books consistently receive higher user ratings than their cinematic adaptations. The average disparity is significant (0.91 points on a 10-point scale).
+2. **Genre Neutrality:** Surprisingly, the genre of the book does not significantly impact how much quality is "lost" or "gained" during adaptation (ANOVA p-value = 0.51). A fantasy book is just as likely to be "better than the movie" as a drama or thriller.
+3. **Predictive Power:** The original book's rating (46% importance) is a significantly stronger predictor of the movie's rating than the production budget (34%). This suggests that the inherent quality of the story (as perceived by readers) is a more critical foundation for cinematic reception than financial resources.
+
+## Limitations and Future Work
+
+- **Sample Size:** The dataset was limited to 124 matched pairs due to strict string matching on titles. Future iterations could use fuzzy matching (Levenshtein distance) to capture titles with slight variations (e.g., "The Lord of the Rings: The Fellowship of the Ring" vs. "The Fellowship of the Ring").
+- **Rating Bias:** Goodreads and TMDB users represent different demographics. Future work could include normalized critic scores (e.g., Metacritic) to provide a more balanced perspective.
+- **Complexity:** The model does not account for the "Director" or "Cast" power, which are known to influence movie ratings significantly.
+
+## Project Presentation (Web App)
+
+A landing page summarizing these findings was built using **React + Vite**.
+To view the web app:
+
+1. Navigate to the `webapp/` directory.
+2. Run `pnpm install` and `pnpm dev`.
