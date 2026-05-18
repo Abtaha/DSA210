@@ -3,9 +3,8 @@ import {
   BrainCircuit,
   Database,
   CheckCircle2,
-  Info,
-  ArrowDownCircle,
-} from "lucide-react";
+  ArrowDownCircle
+} from "lucide-react"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Cell } from "recharts";
 
 import {
