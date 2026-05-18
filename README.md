@@ -90,8 +90,9 @@ The Random Forest model was used to evaluate which factors most strongly influen
 
 ## Project Presentation (Web App)
 
-A landing page summarizing these findings was built using **React + Vite**.
-To view the web app:
+A live version of the landing page summarizing these findings is available here: **[https://dsa-210.vercel.app/](https://dsa-210.vercel.app/)**
+
+The dashboard was built using **React + Vite**. To run it locally:
 
 1. Navigate to the `webapp/` directory.
 2. Run `pnpm install` and `pnpm dev`.
