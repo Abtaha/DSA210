@@ -1,4 +1,4 @@
-# Project Proposal: The "Book vs. Movie" Showdown: A Quantitative Analysis of Adaptations
+# The "Book vs. Movie" Showdown: A Quantitative Analysis of Adaptations
 
 ## **Motivation**
 
